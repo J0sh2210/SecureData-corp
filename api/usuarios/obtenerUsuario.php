@@ -5,7 +5,7 @@ require __DIR__ . "/../../middleware/AuthMiddleware.php";
 
 header("Content-Type: application/json");
 
-$usuario = AuthMiddleware::tienePermiso("ver_perfil");
+$usuario = AuthMiddleware::tienePermiso("ver_usuarios");
 
 $idUsuario = $_GET["id"] ?? null;
 
@@ -20,6 +20,7 @@ $sql = "SELECT
     u.SegundoNombre,
     u.PrimerApellido,
     u.SegundoApellido,
+    c.IdCredencial,
     c.NombreUsuario,
     c.Correo,
     r.Descripcion AS Rol

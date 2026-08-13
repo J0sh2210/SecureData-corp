@@ -4,7 +4,7 @@ require __DIR__ . "/../../config/conexion.php";
 require __DIR__ . "/../../middleware/AuthMiddleware.php";
 
 $json = file_get_contents("php://input");
-$datos = json_decode($json,true);
+$datos = json_decode($json, true);
 
 $usuario = AuthMiddleware::tienePermiso("editar_usuario");
 
@@ -24,32 +24,32 @@ if (!$IdUsuario || !$IdCredencial) {
 }
 
 header("Content-Type: application/json");
-$PrimerNombre = $datos["PrimerNombre"];
-$PrimerApellido=$datos["PrimerApellido"];
-$SegundoNombre =  $datos["SegundoNombre"];
-$SegundoApellido = $datos["SegundoApellido"];
-$Correo = $datos["Correo"];
-try {
-    $conexion -> beginTransaction();
-    $sql = "UPDATE Usuario 
-        SET PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?
-        WHERE IdUsuario = ?";
-    $stmt = $conexion -> prepare($sql);
-    $stmt -> execute([$PrimerNombre, $SegundoNombre, $PrimerApellido, $SegundoApellido, $IdUsuario]);
 
-    $sql = "UPDATE Credencial SET Correo = ? WHERE IdCredencial = ?";
+$PrimerNombre = $datos["PrimerNombre"];
+$SegundoNombre = $datos["SegundoNombre"];
+$PrimerApellido = $datos["PrimerApellido"];
+$SegundoApellido = $datos["SegundoApellido"];
+$NombreUsuario = $datos["NombreUsuario"];
+$Correo = $datos["Correo"];
+$IdRol = $datos["IdRol"];
+
+try {
+    $conexion->beginTransaction();
+
+    $sql = "UPDATE Usuario 
+        SET PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?, IdRol = ?
+        WHERE IdUsuario = ?";
     $stmt = $conexion->prepare($sql);
-    $stmt->execute([$Correo, $IdCredencial]);
-    $conexion -> commit();
-    echo json_encode([
-        "success" => true,
-        "message" => "Usuario editado correctamente"
-    ]);
+    $stmt->execute([$PrimerNombre, $SegundoNombre, $PrimerApellido, $SegundoApellido, $IdRol, $IdUsuario]);
+
+    $sql = "UPDATE Credencial SET NombreUsuario = ?, Correo = ? WHERE IdCredencial = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$NombreUsuario, $Correo, $IdCredencial]);
+
+    $conexion->commit();
+    echo json_encode(["success" => true, "message" => "Usuario editado correctamente"]);
+
+} catch (Exception $e) {
+    $conexion->rollBack();
+    echo json_encode(["success" => false, "message" => "No se pudo editar el usuario"]);
 }
- catch (Exception $e) {
-    $conexion -> rollBack();
-    echo json_encode([
-        "success" => false,
-        "message" => "no se pudo editar el usuario, vuelvelo a intentar mas tarde"
-    ]);   
- }
