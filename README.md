@@ -178,5 +178,49 @@ SecureData-Corp/
 | GET | `api/settings/obtener.php` | Obtener configuracion |
 | POST | `api/settings/actualizar.php` | Actualizar configuracion |
 
+### Demostracion de uso
+
+1. Loguearse
+
+<img width="1912" height="1011" alt="image" src="https://github.com/user-attachments/assets/3cc9dda4-cea3-4608-bf9c-5504552091ee" />
+
+2. Envio del correo al iniciar sesion
+    
+<img width="1911" height="973" alt="image" src="https://github.com/user-attachments/assets/95addfe2-759d-4c1d-a88f-61a9b21fd246" />
+
+3.Abrir link de inicio
+
+<img width="1384" height="454" alt="image" src="https://github.com/user-attachments/assets/5933dad4-f167-43ab-a9e3-507e79ec5742" />
+
+4. Dashboard
+   
+   <img width="1918" height="968" alt="image" src="https://github.com/user-attachments/assets/bab94ffe-914a-432c-bc72-629396068669" />
+
+6. Ver datos
+
+<img width="1919" height="976" alt="image" src="https://github.com/user-attachments/assets/6843b5eb-784f-4538-af8b-b60d19efb40e" />
+
+   
+7. Editar
+
+<img width="1909" height="969" alt="image" src="https://github.com/user-attachments/assets/4b76831b-07d9-4728-ad9e-b542115c87f2" />
+   
+8. Eliminar
+
+<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/50300b4e-c9c8-4291-8d14-1a8cb0aa18d7" />
+
+    
+10. Desactivar autenticacion
+
+<img width="1905" height="940" alt="image" src="https://github.com/user-attachments/assets/4ec1f4f0-4699-45de-8e87-c960d5edd326" />
+
+12. Crear Usuario
+
+<img width="1919" height="961" alt="image" src="https://github.com/user-attachments/assets/d2e4d969-d877-41a3-b72a-543d208a641f" />
+
+
+
+
+
 
 
