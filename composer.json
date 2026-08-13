@@ -1,0 +1,8 @@
+{
+    "name": "securedata-corp/app",
+    "description": "API REST para gestion de usuarios con autenticacion y control de acceso por roles",
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
