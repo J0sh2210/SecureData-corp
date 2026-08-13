@@ -6,7 +6,7 @@ $json = file_get_contents("php://input");
 $datos = json_decode($json,true);
 header("Content-Type: application/json");
 
-$usuario = AuthMiddleware::tienePermiso("ver_usuarios");
+$usuario = AuthMiddleware::tienePermiso("crear_usuario");
 
 if (!isset($datos["PrimerNombre"], $datos["SegundoNombre"], $datos["PrimerApellido"],
     $datos["SegundoApellido"], $datos["IdRol"], $datos["NombreUsuario"], $datos["Correo"],

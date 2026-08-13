@@ -2,6 +2,17 @@
 
 class AuthMiddleware
 {
+    private static ?array $roles = null;
+
+    private static function cargarRoles(): array
+    {
+        if (self::$roles === null) {
+            $json = file_get_contents(__DIR__ . "/../config/roles.json");
+            self::$roles = json_decode($json, true);
+        }
+        return self::$roles;
+    }
+
     public static function autenticar(): array
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -29,6 +40,21 @@ class AuthMiddleware
         $usuario = self::autenticar();
 
         if (!in_array($usuario["rol"], $rolesPermitidos)) {
+            http_response_code(403);
+            echo json_encode(["success" => false, "message" => "No tienes permisos para esta accion"]);
+            exit;
+        }
+
+        return $usuario;
+    }
+
+    public static function tienePermiso(string $permiso): array
+    {
+        $usuario = self::autenticar();
+        $roles = self::cargarRoles();
+        $rolId = (string) $usuario["rol"];
+
+        if (!isset($roles[$rolId]) || !in_array($permiso, $roles[$rolId]["permisos"])) {
             http_response_code(403);
             echo json_encode(["success" => false, "message" => "No tienes permisos para esta accion"]);
             exit;

@@ -5,7 +5,7 @@ require __DIR__ . "/../../middleware/AuthMiddleware.php";
 
 header("Content-Type: application/json");
 
-$usuario = AuthMiddleware::tienePermiso("ver_usuarios");
+$usuario = AuthMiddleware::tienePermiso("ver_perfil");
 
 $idUsuario = $_GET["id"] ?? null;
 
