@@ -80,6 +80,11 @@ APP_URL=http://localhost/SecureData-Corp
 
 El administrador puede activar o desactivar la verificacion por correo electronico desde el menu **Configuracion** en el sidebar.
 
+# Importante
+
+La autenticacion esta deshabilitada para facil ingreso, para activarlo en el dashboard dirigirse a configuracion y activar
+
+
 ## Crear usuario de prueba
 
 1. Abrir phpMyAdmin y ejecutar la siguiente consulta SQL:
