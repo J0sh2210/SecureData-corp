@@ -1,0 +1,14 @@
+{
+    "1": {
+        "nombre": "administrador",
+        "permisos": ["ver_usuarios", "crear_usuario", "editar_usuario", "eliminar_usuario", "ver_perfil"]
+    },
+    "2": {
+        "nombre": "editor",
+        "permisos": ["ver_usuarios", "editar_usuario", "ver_perfil"]
+    },
+    "3": {
+        "nombre": "lector",
+        "permisos": ["ver_usuarios", "ver_perfil"]
+    }
+}
