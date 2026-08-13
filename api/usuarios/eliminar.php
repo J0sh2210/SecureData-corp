@@ -29,6 +29,10 @@ try {
 
     $conexion->beginTransaction();
 
+    $sql = "DELETE FROM LoginToken WHERE IdCredencial = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$credencial["IdCredencial"]]);
+
     $sql = "DELETE FROM Usuario WHERE IdUsuario = ?";
     $stmt = $conexion->prepare($sql);
     $stmt->execute([$IdUsuario]);

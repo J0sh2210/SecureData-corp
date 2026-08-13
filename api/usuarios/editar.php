@@ -30,21 +30,19 @@ $SegundoNombre = $datos["SegundoNombre"];
 $PrimerApellido = $datos["PrimerApellido"];
 $SegundoApellido = $datos["SegundoApellido"];
 $NombreUsuario = $datos["NombreUsuario"];
-$Correo = $datos["Correo"];
-$IdRol = $datos["IdRol"];
 
 try {
     $conexion->beginTransaction();
 
     $sql = "UPDATE Usuario 
-        SET PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?, IdRol = ?
+        SET PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?
         WHERE IdUsuario = ?";
     $stmt = $conexion->prepare($sql);
-    $stmt->execute([$PrimerNombre, $SegundoNombre, $PrimerApellido, $SegundoApellido, $IdRol, $IdUsuario]);
+    $stmt->execute([$PrimerNombre, $SegundoNombre, $PrimerApellido, $SegundoApellido, $IdUsuario]);
 
-    $sql = "UPDATE Credencial SET NombreUsuario = ?, Correo = ? WHERE IdCredencial = ?";
+    $sql = "UPDATE Credencial SET NombreUsuario = ? WHERE IdCredencial = ?";
     $stmt = $conexion->prepare($sql);
-    $stmt->execute([$NombreUsuario, $Correo, $IdCredencial]);
+    $stmt->execute([$NombreUsuario, $IdCredencial]);
 
     $conexion->commit();
     echo json_encode(["success" => true, "message" => "Usuario editado correctamente"]);
